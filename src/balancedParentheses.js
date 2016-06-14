@@ -21,11 +21,12 @@
  *   returns: false
  */
 module.exports = ( input ) => {
-  let checker = 0;
+  let open = 0;
+  let close = 0;
   for (let i=0; i<input.length; i++) {
-    if (input[i] === "(") checker++;
-    if (input[i] === ")") checker--;
-    if (checker === 0) return true;
+    if (input[i] === "(") open++;
+    if (input[i] === ")") close++;
+    if (open !== 0 && open === close) return true;
   }
   return false;
 };
