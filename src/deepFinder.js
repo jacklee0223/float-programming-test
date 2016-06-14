@@ -25,7 +25,8 @@ module.exports = ( input, test ) => {
       }
     } else {
       for (let key in input) {
-        if (test(input[key])) result.push(input[key])
+        if (input[key] === "string" && test(input[key])) result.push(input[key]);
+        else recurse(input[key], test);
       }
     }
   }
